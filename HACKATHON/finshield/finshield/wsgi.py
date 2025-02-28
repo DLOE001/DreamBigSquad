@@ -1,5 +1,5 @@
 """
-WSGI config for sms_scam_checker project.
+WSGI config for finshield project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sms_scam_checker.settings')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "finshield.settings")
 
 application = get_wsgi_application()

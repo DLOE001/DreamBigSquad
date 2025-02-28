@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SMS Scam Checker</title>
+    <title>Finshield Checker</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -61,7 +61,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>SMS Scam Checker</h1>
+      <h1>Finshield Checker</h1>
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %} {{ form.as_p }}
         <button type="submit">Check for Scams</button>
@@ -70,13 +70,12 @@
   </body>
 </html>
 
-# *** checker/templates/checker/result.html ***
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SMS Scam Checker - Result</title>
+    <title>Finshield Checker - Result</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -139,7 +138,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>SMS Scam Check Result</h1>
+      <h1>Finshield Check Result</h1>
 
       <p>
         <strong>SMS Message:</strong><br />

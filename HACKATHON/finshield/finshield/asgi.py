@@ -1,5 +1,5 @@
 """
-ASGI config for sms_scam_checker project.
+ASGI config for finshield project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sms_scam_checker.settings')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "finshield.settings")
 
 application = get_asgi_application()
