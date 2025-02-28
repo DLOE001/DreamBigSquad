@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMS Scam Checker</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 500px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+
+      textarea,
+      input[type="file"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box; /* Important: Include padding and border in the element's total width and height */
+      }
+
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>SMS Scam Checker</h1>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Check for Scams</button>
+      </form>
+    </div>
+  </body>
+</html>
+
+# *** checker/templates/checker/result.html ***
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMS Scam Checker - Result</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 500px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      p {
+        margin-bottom: 10px;
+      }
+
+      img {
+        max-width: 200px;
+        max-height: 200px;
+        margin-top: 10px;
+      }
+
+      .scam-alert {
+        color: red;
+        font-weight: bold;
+      }
+
+      .safe-alert {
+        color: green;
+        font-weight: bold;
+      }
+
+      a {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 15px;
+        background-color: #4caf50;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+      }
+
+      a:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>SMS Scam Check Result</h1>
+
+      <p>
+        <strong>SMS Message:</strong><br />
+        {{ sms_text }}
+      </p>
+
+      {% if image_url %}
+      <p>
+        <strong>Uploaded Image:</strong><br />
+        <img src="{{ image_url }}" alt="Uploaded Image" />
+      </p>
+      {% endif %} {% if is_scam %}
+      <p class="scam-alert"><strong>Possible Scam Detected!</strong></p>
+      {% else %}
+      <p class="safe-alert">
+        <strong
+          >No Obvious Scam Indicators Found (This is not a guarantee of
+          safety).</strong
+        >
+      </p>
+      {% endif %}
+
+      <p><strong>Summary:</strong> {{ summary }}</p>
+
+      <a href="{% url 'check_sms' %}">Check Another SMS</a>
+    </div>
+  </body>
+</html>
