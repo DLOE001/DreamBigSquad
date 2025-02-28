@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SMS Scam Checker - Result</title>
+  </head>
+  <body>
+    <h1>SMS Scam Check Result</h1>
+
+    <p>
+      <strong>SMS Message:</strong><br />
+      {{ sms_text }}
+    </p>
+
+    {% if is_scam %}
+    <p style="color: red"><strong>Possible Scam Detected!</strong></p>
+    {% else %}
+    <p style="color: green">
+      <strong
+        >No Obvious Scam Indicators Found (This is not a guarantee of
+        safety).</strong
+      >
+    </p>
+    {% endif %}
+
+    <p><strong>Summary:</strong> {{ summary }}</p>
+
+    <a href="{% url 'check_sms' %}">Check Another SMS</a>
+    <!-- Link back to the form -->
+  </body>
+</html>
