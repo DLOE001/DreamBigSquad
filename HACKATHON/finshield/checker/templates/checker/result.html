@@ -73,7 +73,7 @@
         {{ sms_text }}
       </p>
 
-      {% if image_url %}
+      {% comment %} {% if image_url %}
       <p>
         <strong>Uploaded Image:</strong><br />
         <img src="{{ image_url }}" alt="Uploaded Image" />
@@ -87,10 +87,10 @@
           safety).</strong
         >
       </p>
-      {% endif %}
+      {% endif %} {% endcomment %}
 
-      <p><strong>Summary:</strong> {{ summary }}</p>
-
+      <p><strong>Summary:</strong> {{ result }}</p>
+     
       <a href="{% url 'check_sms' %}">Check Another SMS</a>
     </div>
   </body>
